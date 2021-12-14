@@ -58,7 +58,7 @@ public class AddressBookService {
         return CONTACT_DELETED_SUCCESSFULLY;
     }
 
-    private AddressBook checkIdPresentOrNot(int id) {
+    public AddressBook checkIdPresentOrNot(int id) {
         return addressBookRepo.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }
