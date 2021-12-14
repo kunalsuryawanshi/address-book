@@ -17,8 +17,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Purpose: To Handle Global Exception
+ *
+ * @author : Kunal Suryawanshi
+ * @since : 13-12-2021
+ */
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    /**
+     * Purpose To Override Method For Validation Status
+     *
+     * @param ex      reference used for exception
+     * @param headers reference for http header
+     * @param status  gives the http status
+     * @param request reference to handle request
+     * @return Error Message with Status
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatus status,
@@ -37,11 +53,23 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         return new ResponseEntity<>(body, headers, status);
     }
 
+    /**
+     * Purpose To Handle Entity Not Found Exception
+     *
+     * @param ex To Specify Reference
+     * @return Error Message With Status
+     */
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException ex) {
         return new ResponseEntity<>("Given Id is Not Found", HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * Purpose To Handle Constraint Violation Exception
+     *
+     * @param request a web request to handle the metadata
+     * @return Error Message With Status
+     */
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<String> handleConstraintViolationException(WebRequest request) {
         return new ResponseEntity<>("Phone Number Already Present in AddressBook", HttpStatus.BAD_REQUEST);

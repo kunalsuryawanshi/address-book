@@ -35,50 +35,50 @@ public class AddressBookServiceTest {
     void whenGetAllMethodCalled_shouldReturnListOfContacts() {
         List<AddressBook> addressBookEntityList = new ArrayList<>();
 
-        AddressBook contact1 = new AddressBook();
-        contact1.setId(1);
-        contact1.setName("Kunal Suryawanshi");
-        contact1.setAddress("304/A");
-        contact1.setCity("Thane");
-        contact1.setState("Maharashtra");
-        contact1.setZip("400606");
-        contact1.setPhoneNumber("+91 9594000000");
-        contact1.setEmail("Test1@gmail.com");
-        contact1.setCreatedOn(LocalDateTime.now());
-        contact1.setUpdatedOn(LocalDateTime.now());
-        addressBookEntityList.add(contact1);
+        AddressBook addressBook1 = new AddressBook();
+        addressBook1.setId(1);
+        addressBook1.setName("Kunal Suryawanshi");
+        addressBook1.setAddress("304/A");
+        addressBook1.setCity("Thane");
+        addressBook1.setState("Maharashtra");
+        addressBook1.setZip("400606");
+        addressBook1.setPhoneNumber("+91 9594000000");
+        addressBook1.setEmail("Test1@gmail.com");
+        addressBook1.setCreatedOn(LocalDateTime.now());
+        addressBook1.setUpdatedOn(LocalDateTime.now());
+        addressBookEntityList.add(addressBook1);
 
-        AddressBook contact2 = new AddressBook();
-        contact1.setId(1);
-        contact1.setName("Pratik Shinde");
-        contact1.setAddress("304/A");
-        contact1.setCity("Thane");
-        contact1.setState("Maharashtra");
-        contact1.setZip("400606");
-        contact1.setPhoneNumber("+91 9000000000");
-        contact1.setEmail("Test2@gmail.com");
-        addressBookEntityList.add(contact2);
+        AddressBook addressBook2 = new AddressBook();
+        addressBook1.setId(1);
+        addressBook1.setName("Pratik Shinde");
+        addressBook1.setAddress("304/A");
+        addressBook1.setCity("Thane");
+        addressBook1.setState("Maharashtra");
+        addressBook1.setZip("400606");
+        addressBook1.setPhoneNumber("+91 9000000000");
+        addressBook1.setEmail("Test2@gmail.com");
+        addressBookEntityList.add(addressBook2);
 
         List<AddressBookDto> addressBookDtoList = new ArrayList<>();
 
         AddressBookDto dtoContact1 = new AddressBookDto();
-        dtoContact1.setName(contact1.getName());
-        dtoContact1.setAddress(contact1.getAddress());
-        dtoContact1.setCity(contact1.getCity());
-        dtoContact1.setState(contact1.getState());
-        dtoContact1.setZip(contact1.getZip());
-        dtoContact1.setPhoneNumber(contact1.getPhoneNumber());
-        dtoContact1.setEmail(contact1.getEmail());
+        dtoContact1.setName(addressBook1.getName());
+        dtoContact1.setAddress(addressBook1.getAddress());
+        dtoContact1.setCity(addressBook1.getCity());
+        dtoContact1.setState(addressBook1.getState());
+        dtoContact1.setZip(addressBook1.getZip());
+        dtoContact1.setPhoneNumber(addressBook1.getPhoneNumber());
+        dtoContact1.setEmail(addressBook1.getEmail());
         addressBookDtoList.add(dtoContact1);
 
         AddressBookDto dtoContact2 = new AddressBookDto();
-        dtoContact2.setName(contact2.getName());
-        dtoContact2.setAddress(contact2.getAddress());
-        dtoContact2.setCity(contact2.getCity());
-        dtoContact2.setState(contact2.getState());
-        dtoContact2.setZip(contact2.getZip());
-        dtoContact2.setPhoneNumber(contact2.getPhoneNumber());
-        dtoContact2.setEmail(contact2.getEmail());
+        dtoContact2.setName(addressBook2.getName());
+        dtoContact2.setAddress(addressBook2.getAddress());
+        dtoContact2.setCity(addressBook2.getCity());
+        dtoContact2.setState(addressBook2.getState());
+        dtoContact2.setZip(addressBook2.getZip());
+        dtoContact2.setPhoneNumber(addressBook2.getPhoneNumber());
+        dtoContact2.setEmail(addressBook2.getEmail());
         addressBookDtoList.add(dtoContact2);
 
         when(addressBookRepository.findAll()).thenReturn(addressBookEntityList);
@@ -104,20 +104,20 @@ public class AddressBookServiceTest {
         dtoContact1.setPhoneNumber("+91 9594000000");
         dtoContact1.setEmail("Test1@gmail.com");
 
-        AddressBook contact1 = new AddressBook();
-        contact1.setId(1);
-        contact1.setName(dtoContact1.getName());
-        contact1.setAddress(dtoContact1.getAddress());
-        contact1.setCity(dtoContact1.getCity());
-        contact1.setState(dtoContact1.getState());
-        contact1.setZip(dtoContact1.getZip());
-        contact1.setPhoneNumber(dtoContact1.getPhoneNumber());
-        contact1.setEmail(dtoContact1.getEmail());
-        contact1.setCreatedOn(LocalDateTime.now());
-        contact1.setUpdatedOn(LocalDateTime.now());
+        AddressBook addressBook1 = new AddressBook();
+        addressBook1.setId(1);
+        addressBook1.setName(dtoContact1.getName());
+        addressBook1.setAddress(dtoContact1.getAddress());
+        addressBook1.setCity(dtoContact1.getCity());
+        addressBook1.setState(dtoContact1.getState());
+        addressBook1.setZip(dtoContact1.getZip());
+        addressBook1.setPhoneNumber(dtoContact1.getPhoneNumber());
+        addressBook1.setEmail(dtoContact1.getEmail());
+        addressBook1.setCreatedOn(LocalDateTime.now());
+        addressBook1.setUpdatedOn(LocalDateTime.now());
 
         when(modelMapper.map(dtoContact1, AddressBook.class))
-                .thenReturn(contact1);
+                .thenReturn(addressBook1);
         String actualMessage = addressBookService.addContact(dtoContact1);
         assertEquals(expectedMessage, actualMessage);
     }
@@ -137,27 +137,27 @@ public class AddressBookServiceTest {
         dtoContact1.setPhoneNumber("+91 9594000000");
         dtoContact1.setEmail("Test1@gmail.com");
 
-        AddressBook contact1 = new AddressBook();
-        contact1.setId(id);
-        contact1.setName("Pratik Shinde");
-        contact1.setAddress("304/A");
-        contact1.setCity("Thane");
-        contact1.setState("Maharashtra");
-        contact1.setZip("400606");
-        contact1.setPhoneNumber("+91 9594000000");
-        contact1.setEmail("Test1@gmail.com");
-        contact1.setCreatedOn(LocalDateTime.now());
-        contact1.setUpdatedOn(LocalDateTime.now());
+        AddressBook addressBook1 = new AddressBook();
+        addressBook1.setId(id);
+        addressBook1.setName("Pratik Shinde");
+        addressBook1.setAddress("304/A");
+        addressBook1.setCity("Thane");
+        addressBook1.setState("Maharashtra");
+        addressBook1.setZip("400606");
+        addressBook1.setPhoneNumber("+91 9594000000");
+        addressBook1.setEmail("Test1@gmail.com");
+        addressBook1.setCreatedOn(LocalDateTime.now());
+        addressBook1.setUpdatedOn(LocalDateTime.now());
 
-        when(addressBookRepository.findById(id)).thenReturn(Optional.of(contact1));
-        contact1.setId(id);
-        contact1.setName(dtoContact1.getName());
-        contact1.setAddress(dtoContact1.getAddress());
-        contact1.setCity(dtoContact1.getCity());
-        contact1.setState(dtoContact1.getState());
-        contact1.setZip(dtoContact1.getZip());
-        contact1.setPhoneNumber(dtoContact1.getPhoneNumber());
-        contact1.setEmail(dtoContact1.getEmail());
+        when(addressBookRepository.findById(id)).thenReturn(Optional.of(addressBook1));
+        addressBook1.setId(id);
+        addressBook1.setName(dtoContact1.getName());
+        addressBook1.setAddress(dtoContact1.getAddress());
+        addressBook1.setCity(dtoContact1.getCity());
+        addressBook1.setState(dtoContact1.getState());
+        addressBook1.setZip(dtoContact1.getZip());
+        addressBook1.setPhoneNumber(dtoContact1.getPhoneNumber());
+        addressBook1.setEmail(dtoContact1.getEmail());
         String actualMessage = addressBookService.updateContact(id, dtoContact1);
         verify(addressBookRepository, times(1))
                 .save(addressBookArgumentCaptor.capture());
@@ -192,17 +192,17 @@ public class AddressBookServiceTest {
         dtoContact1.setPhoneNumber("+91 9594000000");
         dtoContact1.setEmail("Test1@gmail.com");
 
-        AddressBook contact1 = new AddressBook();
-        contact1.setId(id);
-        contact1.setName(dtoContact1.getName());
-        contact1.setAddress(dtoContact1.getAddress());
-        contact1.setCity(dtoContact1.getCity());
-        contact1.setState(dtoContact1.getState());
-        contact1.setZip(dtoContact1.getZip());
-        contact1.setPhoneNumber(dtoContact1.getPhoneNumber());
-        contact1.setEmail(dtoContact1.getEmail());
+        AddressBook addressBook1 = new AddressBook();
+        addressBook1.setId(id);
+        addressBook1.setName(dtoContact1.getName());
+        addressBook1.setAddress(dtoContact1.getAddress());
+        addressBook1.setCity(dtoContact1.getCity());
+        addressBook1.setState(dtoContact1.getState());
+        addressBook1.setZip(dtoContact1.getZip());
+        addressBook1.setPhoneNumber(dtoContact1.getPhoneNumber());
+        addressBook1.setEmail(dtoContact1.getEmail());
 
-        when(addressBookRepository.findById(id)).thenReturn(Optional.of(contact1));
+        when(addressBookRepository.findById(id)).thenReturn(Optional.of(addressBook1));
         String actualMessage = addressBookService.deleteContactById(id);
         assertEquals(expectedMessage, actualMessage);
     }
@@ -220,20 +220,20 @@ public class AddressBookServiceTest {
         dtoContact1.setPhoneNumber("+91 9594000000");
         dtoContact1.setEmail("Test1@gmail.com");
 
-        AddressBook contact1 = new AddressBook();
-        contact1.setId(id);
-        contact1.setName("Kunal Suryawanshi");
-        contact1.setAddress("304/A");
-        contact1.setCity("Thane");
-        contact1.setState("Maharashtra");
-        contact1.setZip("400606");
-        contact1.setPhoneNumber("+91 9594000000");
-        contact1.setEmail("Test1@gmail.com");
-        contact1.setCreatedOn(LocalDateTime.now());
-        contact1.setUpdatedOn(LocalDateTime.now());
+        AddressBook addressBook1 = new AddressBook();
+        addressBook1.setId(id);
+        addressBook1.setName("Kunal Suryawanshi");
+        addressBook1.setAddress("304/A");
+        addressBook1.setCity("Thane");
+        addressBook1.setState("Maharashtra");
+        addressBook1.setZip("400606");
+        addressBook1.setPhoneNumber("+91 9594000000");
+        addressBook1.setEmail("Test1@gmail.com");
+        addressBook1.setCreatedOn(LocalDateTime.now());
+        addressBook1.setUpdatedOn(LocalDateTime.now());
 
-        when(addressBookRepository.findById(id)).thenReturn(Optional.of(contact1));
-        when(modelMapper.map(contact1, AddressBookDto.class))
+        when(addressBookRepository.findById(id)).thenReturn(Optional.of(addressBook1));
+        when(modelMapper.map(addressBook1, AddressBookDto.class))
                 .thenReturn(dtoContact1);
         AddressBookDto addressBookDto = addressBookService.getContactById(id);
         assertEquals(dtoContact1, addressBookDto);

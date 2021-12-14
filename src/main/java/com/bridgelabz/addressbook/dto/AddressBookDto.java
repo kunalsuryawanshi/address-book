@@ -4,7 +4,12 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
+/**
+ * Purpose: To Get Data From End User
+ *
+ * @author : Kunal Suryawanshi
+ * @since : 13-12-2021
+ */
 @Data
 public class AddressBookDto {
     @NotNull
