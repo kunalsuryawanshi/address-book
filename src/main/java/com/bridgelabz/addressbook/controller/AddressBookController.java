@@ -49,23 +49,25 @@ public class AddressBookController {
      * @return : success message for add
      */
     @PostMapping("/book")
-    public String addContact(@Valid @RequestBody AddressBookDto addressBookDto) {
+    public String addContact(@RequestBody @Valid AddressBookDto addressBookDto) {
         return addressBookService.addContact(addressBookDto);
     }
 
     /**
      * Purpose : To Edit Existing Contact
-     * @param id for search data in repo
+     *
+     * @param id             for search data in repo
      * @param addressBookDto for changing existing data to new
      * @return success message for update
      */
     @PutMapping("/book/{id}")
-    public String updateContact(@PathVariable(value = "id") int id, @Valid @RequestBody AddressBookDto addressBookDto) {
+    public String updateContact(@PathVariable(value = "id") int id, @RequestBody @Valid AddressBookDto addressBookDto) {
         return addressBookService.updateContact(id, addressBookDto);
     }
 
     /**
      * Purpose : To Delete Existing Contact
+     *
      * @param id For Search in repo
      * @return success message for delete
      */
