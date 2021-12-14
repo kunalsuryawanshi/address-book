@@ -1,6 +1,5 @@
 package com.bridgelabz.addressbook.service;
 
-import com.bridgelabz.addressbook.configuration.AddressBookConfiguration;
 import com.bridgelabz.addressbook.dto.AddressBookDto;
 import com.bridgelabz.addressbook.entity.AddressBook;
 import com.bridgelabz.addressbook.repository.AddressBookRepository;

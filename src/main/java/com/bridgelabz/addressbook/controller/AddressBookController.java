@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/addressBookApp")
+@RequestMapping("/addressBook")
 public class AddressBookController {
     @Autowired
     AddressBookService addressBookService;
@@ -33,7 +33,7 @@ public class AddressBookController {
     }
 
     @PutMapping("/book/{id}")
-    public String updateContact(@PathVariable(value = "id") int id,@Valid @RequestBody AddressBookDto addressBookDto) {
+    public String updateContact(@PathVariable(value = "id") int id, @Valid @RequestBody AddressBookDto addressBookDto) {
         return addressBookService.updateContact(id, addressBookDto);
     }
 
