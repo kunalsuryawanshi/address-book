@@ -238,6 +238,40 @@ public class AddressBookServiceTest {
         AddressBookDto addressBookDto = addressBookService.getContactById(id);
         assertEquals(dtoContact1, addressBookDto);
     }
+
+    @Test
+    public void whenDeleteContact_IdNotFound_shouldThrowException() {
+        int id = 1;
+        when(addressBookRepository.findById(id)).thenReturn(Optional.empty());
+        assertThrows(EntityNotFoundException.class,
+                () -> addressBookService.deleteContactById(1));
+    }
+
+    @Test
+    public void whenUpdateContact_IdNotFound_shouldThrowException() {
+        int id = 1;
+
+        AddressBookDto dtoContact1 = new AddressBookDto();
+        dtoContact1.setName("Kunal Suryawanshi");
+        dtoContact1.setAddress("304/A");
+        dtoContact1.setCity("Thane");
+        dtoContact1.setState("Maharashtra");
+        dtoContact1.setZip("400606");
+        dtoContact1.setPhoneNumber("+91 9594000000");
+        dtoContact1.setEmail("Test1@gmail.com");
+
+        when(addressBookRepository.findById(id)).thenReturn(Optional.empty());
+        assertThrows(EntityNotFoundException.class,
+                () -> addressBookService.updateContact(1, dtoContact1));
+    }
+
+    @Test
+    public void whenGetContact_IdNotFound_shouldThrowException() {
+        int id = 1;
+        when(addressBookRepository.findById(id)).thenReturn(Optional.empty());
+        assertThrows(EntityNotFoundException.class,
+                () -> addressBookService.getContactById(id));
+    }
 }
 
 
