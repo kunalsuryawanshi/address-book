@@ -49,7 +49,7 @@ public class AddressBookController {
      * @return : success message for add
      */
     @PostMapping("/book")
-    public String addContact(@RequestBody @Valid AddressBookDto addressBookDto) {
+    public String addContact(@Valid @RequestBody AddressBookDto addressBookDto) {
         return addressBookService.addContact(addressBookDto);
     }
 
@@ -61,7 +61,7 @@ public class AddressBookController {
      * @return success message for update
      */
     @PutMapping("/book/{id}")
-    public String updateContact(@PathVariable(value = "id") int id, @RequestBody @Valid AddressBookDto addressBookDto) {
+    public String updateContact(@PathVariable(value = "id") int id, @Valid @RequestBody AddressBookDto addressBookDto) {
         return addressBookService.updateContact(id, addressBookDto);
     }
 
