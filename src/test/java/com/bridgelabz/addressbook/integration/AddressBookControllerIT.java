@@ -101,4 +101,41 @@ public class AddressBookControllerIT {
         mockMvc.perform(MockMvcRequestBuilders
                 .get("/addressBook/book/1")).andExpect(status().isOk());
     }
+
+    @Test
+    public void givenAddContact_whenValidationFailed_shouldShowBadRequest() throws Exception {
+        AddressBookDto dtoContact = new AddressBookDto();
+        dtoContact.setName("kunalsuryawanshi");
+        dtoContact.setAddress("304/A");
+        dtoContact.setCity("Thane");
+        dtoContact.setState("Maharashtra");
+        dtoContact.setZip("606");
+        dtoContact.setPhoneNumber("9594000000");
+        dtoContact.setEmail("Test1@gmail");
+        String jsonRequest = objectMapper.writeValueAsString(dtoContact);
+        when(addressBookService.addContact(any())).thenReturn("Bad Request");
+        mockMvc.perform(MockMvcRequestBuilders.post("/addressBook/book")
+                        .content(jsonRequest).contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void givenUpdateContact_whenValidationFailed_shouldShowBadRequest() throws Exception {
+        int id = 1;
+        AddressBookDto dtoContact = new AddressBookDto();
+        dtoContact.setName("kunalsuryawanshi");
+        dtoContact.setAddress("304/A");
+        dtoContact.setCity("Thane");
+        dtoContact.setState("Maharashtra");
+        dtoContact.setZip("606");
+        dtoContact.setPhoneNumber("9594000000");
+        dtoContact.setEmail("Test1@gmail");
+
+        String jsonRequest = objectMapper.writeValueAsString(dtoContact);
+        when(addressBookService.updateContact(id, dtoContact))
+                .thenReturn("Bad Request");
+        mockMvc.perform(MockMvcRequestBuilders.put("/addressBook/book/1")
+                        .content(jsonRequest).contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isBadRequest());
+    }
 }
